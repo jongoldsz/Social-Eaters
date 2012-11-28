@@ -1,0 +1,9 @@
+How to use the API:
+
+View Events
+=> POST api/api.php {"function": "view_events"}
+=> RETURN a json array of all the events
+
+Join Event
+=> POST api/api.php {"function": "join_event", "event_id": event_id, "user_table": user_table, "user_id": user_id}
+=> RETURN (TBD)

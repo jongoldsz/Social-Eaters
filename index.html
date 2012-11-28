@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="x-ua-compatible" content="IE=8">
+	<title>Social Eaters</title>
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
+	<link rel="stylesheet" href="css/themes/socialeaters.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
+
+
+	<script src="js/jquery-1.8.2.min.js"></script>
+	<script src="js/jquery.mobile-1.1.1.min.js"></script>
+	<script type="text/javascript" src="js/global_variables.js"></script>
+	<script type="text/javascript" src="js/facebook-auth.js"></script>
+	<script type="text/javascript" src="js/functions.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	
+</head>
+<body>
+	<div data-role="page" id="home">
+		<div data-role="header" data-id="header" data-position="fixed" data-theme="f">
+			Social Eaters
+			<a href="#home" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+			<a href="#home" data-icon="delete" class="logout_link" data-iconpos="notext" data-direction="reverse">Logout</a>
+		</div><!-- /header -->
+		<div data-role="content">
+		  <a href="#" id="login_link">Login</a>
+		</div><!-- /content -->
+		<div data-role="footer" data-id="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#upcoming" data-theme="f" data-shadow="true">Upcoming</a></li>
+					<li><a href="#organize" data-theme="f">Organize</a></li>
+					<li><a href="#attending" data-theme="f">Attending</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+	</div><!-- /page -->
+	
+	<div data-role="page" id="upcoming">
+		<div data-role="header" data-id="header" data-position="fixed" data-theme="f">
+			Upcoming Events
+			<a href="#home" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+			<a href="#home" data-icon="delete" class="logout_link" data-iconpos="notext" data-direction="reverse">Logout</a>
+		</div><!-- /header -->
+		<div data-role="content">
+		  <div data-role="collapsible-set" id="upcoming_events"></div>
+		</div><!-- /content -->
+		<div data-role="footer" data-id="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+				        <li><a href="#upcoming" data-theme="f" data-shadow="true">Upcoming</a></li>
+                                        <li><a href="#organize" data-theme="f">Organize</a></li>
+                                        <li><a href="#attending" data-theme="f">Attending</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+	</div><!-- /page -->
+	
+	<div data-role="page" id="organize">
+		<div data-role="header" data-id="header" data-position="fixed" data-theme="f">
+			Organize an event
+			<a href="#home" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+			<a href="#home" data-icon="delete" class="logout_link" data-iconpos="notext" data-direction="reverse">Logout</a>
+		</div><!-- /header -->
+		<div data-role="content">
+		  <div data-role="collapsible-set" id="my_events"></div>
+		  <a href="#create_event" data-role="button" data-icon="plus">Create new event</a>
+		</div><!-- /content -->
+		<div data-role="footer" data-id="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+ 				        <li><a href="#upcoming" data-theme="f" data-shadow="true">Upcoming</a></li>
+                                        <li><a href="#organize" data-theme="f">Organize</a></li>
+                                        <li><a href="#attending" data-theme="f">Attending</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+	</div><!-- /page -->
+
+	<div data-role="page" id="attending">
+		<div data-role="header" data-id="header" data-position="fixed" data-theme="f">
+			Events I'm attending
+			<a href="#home" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+			<a href="#home" data-icon="delete" class="logout_link" data-iconpos="notext" data-direction="reverse">Logout</a>
+		</div><!-- /header -->
+		<div data-role="content">
+		  <div data-role="collapsible-set" id="attending_events"></div>
+		</div>
+		<div data-role="footer" data-id="footer" data-position="fixed">
+                        <div data-role="navbar">
+                                <ul>
+				        <li><a href="#upcoming" data-theme="f" data-shadow="true">Upcoming</a></li>
+                                        <li><a href="#organize" data-theme="f">Organize</a></li>
+                                        <li><a href="#attending" data-theme="f">Attending</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+	</div><!-- /page -->
+
+	<div data-role="page" id="edit_event">
+                <div data-role="header" data-id="header" data-position="fixed" data-theme="f">
+                        Edit event
+                        <a href="#home" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+                        <a href="#home" data-icon="delete" class="logout_link" data-iconpos="notext" data-direction="reverse">Logout</a>
+                </div><!-- /header -->
+                <div data-role="content">
+		  <!-- Name, location, date, time -->
+		  <form>
+		    <input type="hidden" id="e_event_id" value="" />
+		    <input type="text" id="e_event_name" placeholder="What's happening?" />
+		    <input type="text" id="e_event_location" placeholder="Where's it happening?"/>
+		    <input type="hidden" id="e_event_address1"/>
+		    <input type="hidden" id="e_event_address2"/>
+		    <input type="date" name="date" id="e_event_date" value="" placeholder="When's it happening?" />
+		    <input type="time" name="time" id="e_event_time" value="" placeholder="What time?" />
+		    <input type="button" value="Update" id="save_changes_button" />
+		    <input type="button" value="Delete" id="delete_button" />
+
+		    <div data-role="collapsible-set">
+		      <div data-role="collapsible">
+			<h3>View Attendees</h3>
+			<p id="attendees"></p>
+		      </div>
+		    </div>
+
+		  </form>
+                </div>
+                <div data-role="footer" data-id="footer" data-position="fixed">
+                        <div data-role="navbar">
+                                <ul>
+                                        <li><a href="#upcoming" data-theme="f" data-shadow="true">Upcoming</a></li>
+                                        <li><a href="#organize" data-theme="f">Organize</a></li>
+                                        <li><a href="#attending" data-theme="f">Attending</a></li>
+                                </ul>
+                        </div><!-- /navbar -->
+                </div><!-- /footer -->
+        </div><!-- /page -->
+
+	<div data-role="page" id="create_event">
+	  <div data-role="header" data-id="header" data-position="fixed" data-theme="f">
+	    Create event
+	    <a href="#home" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+	    <a href="#home" data-icon="delete" class="logout_link" data-iconpos="notext" data-direction="reverse">Logout</a>
+	    </div><!-- /header -->
+	  <div data-role="content">
+                  <!-- Name, location, date, time -->
+                  <form>
+                    <input type="text" id="c_event_name" placeholder="What's happening?" />
+                    <input type="text" id="c_event_location" placeholder="Where's it happening?"/>
+		    <input type="hidden" id="c_event_address1"/>
+		    <input type="hidden" id="c_event_address2"/>
+                    <input type="date" name="date" id="c_event_date" value="" placeholder="When's it happening?" />
+                    <input type="time" name="time" id="c_event_time" value="" placeholder="What time?" />
+                    <input type="button" value="Create" id="create_button" />
+                  </form>
+		  </div>
+	  <div data-role="footer" data-id="footer" data-position="fixed">
+	    <div data-role="navbar">
+	      <ul>
+                <li><a href="#upcoming" data-theme="f" data-shadow="true">Upcoming</a></li>
+		<li><a href="#organize" data-theme="f">Organize</a></li>
+                <li><a href="#attending" data-theme="f">Attending</a></li>
+              </ul>
+            </div><!-- /navbar -->
+          </div><!-- /footer -->
+        </div><!-- /page -->
+
+	<div data-role="page" id="yelp_search">
+          <div data-role="header" data-id="header" data-position="fixed" data-theme="f">
+            Yelp Search
+            <a href="#home" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+            <a href="#home" data-icon="delete" class="logout_link" data-iconpos="notext" data-direction="reverse">Logout</a>
+            </div><!-- /header -->
+          <div data-role="content">
+                  <!-- Name, location, date, time -->
+                  <form>
+                    <input type="search" id="search" />
+                  </form>
+		  <div data-role="collapsible-set" id="entries"></div>
+	    <div data-role="footer" data-id="footer" data-position="fixed">
+	          <div data-role="navbar">
+              <ul>
+                <li><a href="#upcoming" data-theme="f" data-shadow="true">Upcoming</a></li>
+                <li><a href="#organize" data-theme="f">Organize</a></li>
+                <li><a href="#attending" data-theme="f">Attending</a></li>
+              </ul>
+            </div><!-- /navbar -->
+          </div><!-- /footer -->
+        </div><!-- /page -->
+
+</body>
+</html>
